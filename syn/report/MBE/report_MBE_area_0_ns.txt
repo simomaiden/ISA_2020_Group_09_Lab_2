@@ -1,0 +1,33 @@
+Warning: Design 'FPmul' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : area
+Design : FPmul
+Version: O-2018.06-SP4
+Date   : Sun Nov 15 14:57:15 2020
+****************************************
+
+Library(s) Used:
+
+    NangateOpenCellLibrary (File: /software/dk/nangate45/synopsys/NangateOpenCellLibrary_typical_ecsm_nowlm.db)
+
+Number of ports:                          367
+Number of nets:                          3998
+Number of cells:                         1664
+Number of combinational cells:           1326
+Number of sequential cells:               285
+Number of macros/black boxes:               0
+Number of buf/inv:                        259
+Number of references:                      41
+
+Combinational area:               1659.041995
+Buf/Inv area:                      177.155998
+Noncombinational area:            1312.177958
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  2971.219953
+Total area:                 undefined
+
+Information: This design contains black box (unknown) components. (RPT-8)
+1

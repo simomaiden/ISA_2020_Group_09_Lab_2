@@ -1,0 +1,79 @@
+Information: Building the design 'Dadda_Layer_2'. (HDL-193)
+Warning: Cannot find the design 'Dadda_Layer_2' in the library 'WORK'. (LBR-1)
+Information: Building the design 'Dadda_Layer_3'. (HDL-193)
+Warning: Cannot find the design 'Dadda_Layer_3' in the library 'WORK'. (LBR-1)
+Information: Building the design 'Dadda_Layer_4'. (HDL-193)
+Warning: Cannot find the design 'Dadda_Layer_4' in the library 'WORK'. (LBR-1)
+Information: Building the design 'Dadda_Layer_5'. (HDL-193)
+Warning: Cannot find the design 'Dadda_Layer_5' in the library 'WORK'. (LBR-1)
+Information: Building the design 'Dadda_Layer_6'. (HDL-193)
+Warning: Cannot find the design 'Dadda_Layer_6' in the library 'WORK'. (LBR-1)
+Information: Building the design 'Dadda_Layer_7'. (HDL-193)
+Warning: Cannot find the design 'Dadda_Layer_7' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'Dadda_Layer_2' in 'FPmul'. (LINK-5)
+Warning: Unable to resolve reference 'Dadda_Layer_3' in 'FPmul'. (LINK-5)
+Warning: Unable to resolve reference 'Dadda_Layer_4' in 'FPmul'. (LINK-5)
+Warning: Unable to resolve reference 'Dadda_Layer_5' in 'FPmul'. (LINK-5)
+Warning: Unable to resolve reference 'Dadda_Layer_6' in 'FPmul'. (LINK-5)
+Warning: Unable to resolve reference 'Dadda_Layer_7' in 'FPmul'. (LINK-5)
+Warning: Design 'FPmul' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : FPmul
+Version: O-2018.06-SP4
+Date   : Tue Nov 17 09:14:48 2020
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: I2/SIG_in_reg[27]
+              (rising edge-triggered flip-flop clocked by MY_CLK)
+  Endpoint: I3/EXP_out_round_reg[7]
+            (rising edge-triggered flip-flop clocked by MY_CLK)
+  Path Group: MY_CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FPmul              5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock MY_CLK (rise edge)                 0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  I2/SIG_in_reg[27]/CK (DFF_X1)            0.00       0.00 r
+  I2/SIG_in_reg[27]/Q (DFF_X1)             0.09       0.09 r
+  U1028/Z (BUF_X2)                         0.06       0.15 r
+  U959/Z (CLKBUF_X1)                       0.10       0.24 r
+  U1134/ZN (AND2_X1)                       0.06       0.31 r
+  U1135/ZN (NAND2_X1)                      0.04       0.34 f
+  U2009/ZN (INV_X1)                        0.03       0.37 r
+  U2010/ZN (NAND2_X1)                      0.03       0.40 f
+  U2011/ZN (NOR2_X1)                       0.06       0.46 r
+  U2012/ZN (NAND2_X1)                      0.04       0.50 f
+  U2013/ZN (NOR2_X1)                       0.06       0.57 r
+  U2014/ZN (NAND2_X1)                      0.04       0.60 f
+  U2015/ZN (XNOR2_X1)                      0.06       0.66 f
+  I3/EXP_out_round_reg[7]/D (DFF_X1)       0.01       0.67 f
+  data arrival time                                   0.67
+
+  clock MY_CLK (rise edge)                 0.78       0.78
+  clock network delay (ideal)              0.00       0.78
+  clock uncertainty                       -0.07       0.71
+  I3/EXP_out_round_reg[7]/CK (DFF_X1)      0.00       0.71 r
+  library setup time                      -0.04       0.67
+  data required time                                  0.67
+  -----------------------------------------------------------
+  data required time                                  0.67
+  data arrival time                                  -0.67
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1

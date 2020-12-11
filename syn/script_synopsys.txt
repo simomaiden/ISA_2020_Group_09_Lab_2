@@ -1,0 +1,56 @@
+USEFUL COMMANDS ARE LISTED IN THIS FILE
+
+---------------------------------------------------------------------
+
+analyze -f vhdl -lib WORK ../MBE/src/HA.vhd
+analyze -f vhdl -lib WORK ../MBE/src/FA.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Mux.vhd
+analyze -f vhdl -lib WORK ../MBE/src/MCSA.vhd
+analyze -f vhdl -lib WORK ../MBE/src/MBEU.vhd
+analyze -f vhdl -lib WORK ../MBE/src/PPUNIT.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Dadda_layer_7.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Dadda_layer_6.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Dadda_layer_5.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Dadda_layer_4.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Dadda_layer_3.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Dadda_layer_2.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Adder.vhd
+analyze -f vhdl -lib WORK ../MBE/src/Significand_Multiplier.vhd
+
+analyze -f vhdl -lib WORK ../fpuvhdl/common/fpnormalize_fpnormalize.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/common/fpround_fpround.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/common/packfp_packfp.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/common/unpackfp_unpackfp.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/multiplier/fpmul_stage1_struct.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/multiplier/fpmul_stage2_struct.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/multiplier/fpmul_stage3_struct.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/multiplier/fpmul_stage4_struct.vhd
+analyze -f vhdl -lib WORK ../fpuvhdl/multiplier/fpmul_pipeline.vhd
+
+set power_preserve_rtl_hier_names true
+elaborate FPmul -arch pipeline -lib work
+uniquify
+link
+
+create_clock -name MY_CLK -period 0.72 clk
+set_dont_touch_network MY_CLK
+set_clock_uncertainty 0.07 [get_clocks MY_CLK]
+set_input_delay 0.5 -max -clock MY_CLK [remove_from_collection [all_inputs] clk]
+set_output_delay 0.5 -max -clock MY_CLK [all_outputs]
+
+set OLOAD [load_of NangateOpenCellLibrary/BUF_X4/A]
+set_load $OLOAD [all_outputs]
+
+ungroup -all -flatten
+compile
+
+report_timing > report/report_MBE_OPTREG_timing_0_72_ns.txt
+report_area > report/report_MBE_OPTREG_area_0_72_ns.txt
+
+
+-- ADDITIONAL COMMANDS
+
+set_implementation DW02_mult/pparch [find cell *mult*]
+
+optimize_registers
+compile_ultra
